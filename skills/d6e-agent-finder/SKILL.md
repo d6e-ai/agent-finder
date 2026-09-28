@@ -47,17 +47,24 @@ Do not invent numeric cadence, duration, savings, access, or connector support. 
 
 Generalize both the readable diagnosis and the JSON. Never include message or email bodies, full prompts, long conversation quotations, personal or customer identifiers, credentials, confidential figures, private file paths, or other raw source data. Summarize evidence by source type and pattern, not by quoting or naming the underlying record. Do not enumerate excluded requests or their topics in the JSON. Make the JSON safe to review before a user deliberately shares it.
 
+## Inquiry URL and locales
+
+Use `https://www.d6e.ai/{locale}#inquiry` for the CTA and any approved submission.
+
+| Locale | Language |
+| --- | --- |
+| `en-US` | English |
+| `ja-JP` | Japanese |
+
+These locales have verified inquiry forms. Prefer the user's explicit locale, then match their language across regions. Check the live site for additional supported locales before using them. If no locale matches, use `en-US` and disclose the fallback. Verify the selected form before linking or submitting; never invent a locale path.
+
 ## Present the result
 
 Read [references/workflow-definition.md](references/workflow-definition.md) for field meanings and the output contract.
 
 1. First show roughly 3 to 10 strongest candidates in the user's language, ordered by promise. Show fewer, including zero, when evidence does not support 3. For each, show its Workflow name, current work, agent process, likely services or connectors, exact human decision or approval, Automation Potential, Confidence, and a brief reason it appears repeated. Clearly describe the inspected scope and limitations.
 2. Then output one valid JSON code block following the reference contract. It must describe the same candidates in the same order, with no more than 10. Unknown values must remain unknown or empty rather than guessed. If there are no qualified candidates, use `"workflow_candidates": []` and say what evidence is missing. Before finalizing, check every free-text JSON field for source details that do not belong in the abstract definition.
-3. End with a concise CTA linking to the D6E inquiry form in the selected locale. Offer to post the abstract Workflow Definition there, and ask whether the user wants it sent so D6E can discuss the Connector, Trigger, AI processing, and Human Approval needed for an agent. Do not claim the inquiry form is an Agent Builder or JSON API.
-
-## Select an inquiry locale
-
-Before showing the CTA or preparing a submission, prefer a locale the user explicitly chose; otherwise use the user's current language. Resolve it to a **verified, supported** D6E landing page with an `#inquiry` form. The currently verified choices include `https://www.d6e.ai/en-US#inquiry` and `https://www.d6e.ai/ja-JP#inquiry`; check the live site for additional locales instead of assuming this list is exhaustive. Match the language even if the region differs. If no supported match exists, use the verified English form and tell the user about the fallback. Never invent a localized path or silently switch to the Japanese form. Keep the selected locale in both the CTA and the actual form submission.
+3. Link to the selected inquiry URL and offer to post the abstract Workflow Definition for a discussion of Connector, Trigger, AI processing, and Human Approval. Ask whether the user wants it sent. Describe the destination as an inquiry form, not an Agent Builder or JSON API.
 
 ## Post an approved diagnosis to D6E
 
