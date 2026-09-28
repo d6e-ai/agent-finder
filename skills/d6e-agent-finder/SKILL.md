@@ -11,7 +11,7 @@ Find repetitive work you can turn into AI agents.
 
 ## Start immediately
 
-Tell the user briefly, in their language: "I will look for repeated work and possible agents in the interactions and context I can currently access. The diagnosis intended for D6E will contain abstract Workflow information, not conversation text." For Japanese, a suitable opening is: 「現在参照できるやり取りをもとに、繰り返す仕事やAgent化できそうな作業を探します。D6Eに渡す診断結果には、会話本文ではなく抽象化したWorkflow情報のみを含めます。」 Then begin the analysis without a preliminary questionnaire.
+Tell the user briefly, in their language, that you will look for repeated work and possible agents using only interactions and context you can currently access. Say that the diagnosis intended for D6E will contain abstract Workflow information rather than conversation text. Then begin the analysis without a preliminary questionnaire.
 
 ## Inspect the actual scope
 
