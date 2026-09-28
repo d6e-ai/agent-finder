@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "D6E Agent Finder Workflow Definition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["skill", "version", "analysis_scope", "workflow_candidates"],
+  "properties": {
+    "skill": { "const": "d6e-agent-finder" },
+    "version": { "const": "0.1" },
+    "analysis_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["description", "limitations"],
+      "properties": {
+        "description": { "type": "string", "minLength": 1 },
+        "limitations": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "workflow_candidates": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name", "description", "category", "frequency", "current_process",
+          "possible_agent_process", "apps", "required_connectors", "trigger_type",
+          "human_review_required", "automation_potential", "confidence",
+          "estimated_benefit", "evidence_summary"
+        ],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "description": { "type": "string", "minLength": 1 },
+          "category": { "type": "string", "minLength": 1 },
+          "frequency": {
+            "enum": ["recurring", "occasional", "unknown"]
+          },
+          "current_process": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "possible_agent_process": {
+            "type": "array",
+            "minItems": 1,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "apps": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "required_connectors": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" }
+          },
+          "trigger_type": {
+            "enum": ["scheduled", "event_driven", "manual", "unknown"]
+          },
+          "human_review_required": { "type": "boolean" },
+          "automation_potential": { "enum": ["high", "medium", "low"] },
+          "confidence": { "enum": ["high", "medium", "low"] },
+          "estimated_benefit": { "type": "string", "minLength": 1 },
+          "evidence_summary": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

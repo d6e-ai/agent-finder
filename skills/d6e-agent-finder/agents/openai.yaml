@@ -1,0 +1,4 @@
+interface:
+  display_name: "D6E Agent Finder"
+  short_description: "Find repetitive work you can turn into AI agents."
+  default_prompt: "Use $d6e-agent-finder to find evidence-backed work I could turn into AI agents."
