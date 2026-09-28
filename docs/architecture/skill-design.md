@@ -9,7 +9,7 @@ D6E Agent Finder is a portable instruction-only Skill. Its host AI performs the 
 3. It groups comparable observed tasks, checks for a repeat signal, and removes one-off or unsafe work.
 4. It ranks a small number of specific workflows by automation potential and evidence confidence.
 5. It shows a readable diagnosis and a matching JSON Workflow Definition for user review.
-6. Sharing with D6E is a separate, explicit user action through the verified inquiry form. The user reviews the exact JSON and contact details before submission.
+6. Sharing with D6E is a separate, explicit user action through an inquiry form in a verified supported locale. The user reviews the exact JSON and contact details before submission.
 
 ## Trust boundaries
 
@@ -21,4 +21,4 @@ The next product stages may consume this reviewed definition to design Connector
 
 ## Inquiry submission
 
-The [D6E inquiry form](https://www.d6e.ai/ja-JP#inquiry) is a contact form, not a Workflow Definition API. Its message field can carry the abstract JSON, while company, contact name, and email are separate user-supplied contact fields. The Skill checks the live form constraints before submission, prepares a valid payload within its message limit, and requires approval of the exact outgoing content. If the full JSON does not fit, it presents a clearly reduced candidate set for approval. It does not silently truncate or make multiple submissions.
+The D6E inquiry form is a contact form, not a Workflow Definition API. The Skill selects a live supported locale using the user's explicit preference or current language, with a disclosed English fallback if no language match exists. The currently verified [English](https://www.d6e.ai/en-US#inquiry) and [Japanese](https://www.d6e.ai/ja-JP#inquiry) forms share the same fields and message limit. Its message field can carry the abstract JSON, while company, contact name, and email are separate user-supplied contact fields. The Skill checks the selected live form before submission, prepares a valid payload within its message limit, and requires approval of the exact outgoing content. If the full JSON does not fit, it presents a clearly reduced candidate set for approval. It does not silently truncate or make multiple submissions.

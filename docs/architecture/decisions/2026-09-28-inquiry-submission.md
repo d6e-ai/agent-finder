@@ -6,11 +6,11 @@ Accepted for the initial Skill.
 
 ## Context
 
-The user supplied `https://www.d6e.ai/ja-JP#inquiry` as the place to post a diagnosis. The live page has a contact form with required company, contact name, email, and message fields. The message field has a 5,000-character limit. It is not a dedicated JSON ingestion endpoint.
+The user supplied `https://www.d6e.ai/ja-JP#inquiry` as the place to post a diagnosis and then required support for other locales. The verified `en-US` and `ja-JP` pages each have a contact form with required company, contact name, email, and message fields. The message field has a 5,000-character limit. These are not dedicated JSON ingestion endpoints.
 
 ## Decision
 
-The Skill offers the inquiry form as an optional handoff after showing the readable diagnosis and Workflow Definition JSON. For a requested submission, it prepares the exact abstract JSON as the message, obtains contact details directly from the user, rechecks live form constraints, and asks for final approval before submitting once. If the full JSON does not fit, it proposes a valid reduced candidate set and discloses the omission. It never sends conversation text or silently truncates the payload.
+The Skill offers a verified localized inquiry form as an optional handoff after showing the readable diagnosis and Workflow Definition JSON. It honors an explicit locale choice, otherwise matches the user's language; if none is supported, it discloses an English fallback. It verifies a locale's form before linking or posting, rather than constructing unverified paths. For a requested submission, it prepares the exact abstract JSON as the message, obtains contact details directly from the user, rechecks live form constraints, and asks for final approval before submitting once. If the full JSON does not fit, it proposes a valid reduced candidate set and discloses the omission. It never sends conversation text or silently truncates the payload.
 
 ## Consequences
 
