@@ -1,6 +1,6 @@
 # Workflow Definition contract
 
-The diagnosis is an idea for an agent, not an instruction to execute it. The readable list and the JSON describe the same ranked candidates. The JSON contains only abstract business process information that the user can review before sharing with D6E.
+The diagnosis is an idea for an agent, not an instruction to execute it. The readable list and the primary JSON describe the same ranked candidates. The JSON contains only abstract business process information that the user can review before sharing with D6E. A separately labeled, user-approved inquiry payload may contain only the top-ranked subset when the form's message limit prevents sending the full JSON; it must still satisfy the schema.
 
 The machine-readable contract is [workflow-definition.schema.json](workflow-definition.schema.json). Emit a complete JSON object in one fenced `json` block. Do not wrap it in Markdown inside the block, add comments, or include a submission URL.
 

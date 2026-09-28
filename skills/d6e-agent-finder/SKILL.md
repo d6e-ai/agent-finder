@@ -1,6 +1,6 @@
 ---
 name: d6e-agent-finder
-description: Find evidence-backed repetitive work in context the current AI can legitimately access and turn it into privacy-preserving Workflow Definitions for possible AI agents. Use when a user invokes D6E Agent Finder or asks to discover agent automation opportunities from their AI use.
+description: Find evidence-backed repetitive work in context the current AI can legitimately access and turn it into privacy-preserving Workflow Definitions for possible AI agents. Use when a user invokes D6E Agent Finder, asks to discover agent automation opportunities, or wants to send its diagnosis to D6E.
 metadata:
   short-description: Find repetitive work you can turn into AI agents.
 ---
@@ -53,4 +53,13 @@ Read [references/workflow-definition.md](references/workflow-definition.md) for 
 
 1. First show roughly 3 to 10 strongest candidates in the user's language, ordered by promise. Show fewer, including zero, when evidence does not support 3. For each, show its Workflow name, current work, agent process, likely services or connectors, exact human decision or approval, Automation Potential, Confidence, and a brief reason it appears repeated. Clearly describe the inspected scope and limitations.
 2. Then output one valid JSON code block following the reference contract. It must describe the same candidates in the same order, with no more than 10. Unknown values must remain unknown or empty rather than guessed. If there are no qualified candidates, use `"workflow_candidates": []` and say what evidence is missing. Before finalizing, check every free-text JSON field for source details that do not belong in the abstract definition.
-3. End with a concise CTA: the abstract Workflow Definition can be supplied to D6E for a future or verified Agent Builder flow that determines Connector, Trigger, AI processing, and Human Approval. Do not invent a D6E endpoint, assert an unverified feature is live, or send data automatically. Send only on an explicit user request after verifying the destination.
+3. End with a concise CTA linking to the [D6E inquiry form](https://www.d6e.ai/ja-JP#inquiry). Offer to post the abstract Workflow Definition there, and ask whether the user wants it sent so D6E can discuss the Connector, Trigger, AI processing, and Human Approval needed for an agent. Do not claim the inquiry form is an Agent Builder or JSON API.
+
+## Post an approved diagnosis to D6E
+
+The inquiry form is an optional submission channel, not part of running the diagnosis. Invoking this Skill alone does not authorize posting. When the user accepts the offer or independently asks to send the diagnosis, follow these steps:
+
+1. Recheck the live form at `https://www.d6e.ai/ja-JP#inquiry` before submission. It currently asks for company, contact name, email address, and a message. Use only contact values the user explicitly supplies or confirms for this submission; never infer or invent them from conversations or memory. Tell the user these contact values will be sent alongside the abstract diagnosis.
+2. Prepare the exact message as the privacy-reviewed Workflow Definition JSON, without Markdown fences, raw conversations, full prompts, credentials, or other source material. Check the live message limit; the verified form currently permits up to 5,000 characters. Compact the JSON without changing its values. If it still exceeds the limit, prepare a second valid JSON object containing only the highest-ranked candidates that fit. Clearly show the reduced payload and which candidates were left out. If no useful candidate fits, do not submit. Never silently truncate or split submissions.
+3. Show the destination, contact values, and exact message payload for the user's final approval. Submit the form once only after that approval, using the live form and its actual fields. Do not send JSON directly to the page URL or assume a separate API exists.
+4. Confirm submission only from an observed success response. If the outcome is uncertain, report that uncertainty without retrying automatically. If form interaction is unavailable, provide the link and a ready-to-paste payload, and state that nothing was submitted.
